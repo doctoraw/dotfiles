@@ -1,0 +1,41 @@
+[alias]
+  branches = branch -a
+  tags = tag
+  stashes = stash list
+  unstage = reset -q HEAD --
+  discard = checkout --
+  uncommit = reset --mixed HEAD~
+  amend = commit --amend
+  nevermind = !git reset --hard HEAD && git clean -d -f
+  tree = log --color --graph --pretty=format:'%Cred%h%d%Creset %s %C(yellow)(%an, %cr)%Creset' --abbrev-commit
+[user]
+	name = doctoraw
+	email = mariamunueram@gmail.com
+[credential]
+  helper = osxkeychain
+[apply]
+  whitespace = nowarn
+[pull]
+  rebase = true
+[push]
+	default = matching
+[rerere]
+	enabled = true
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = green
+  changed = magenta
+  untracked = cyan

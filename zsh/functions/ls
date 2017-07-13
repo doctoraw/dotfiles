@@ -1,0 +1,3 @@
+# `brew install coreutils`
+local IFS=,
+command ls $=LS_OPTIONS "$@"

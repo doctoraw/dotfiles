@@ -1,0 +1,24 @@
+# Edit config
+alias reload='source ~/.zshrc'
+alias ea='subl ~/.dotfiles/zsh/aliases'
+alias ee='subl ~/.dotfiles/zsh/environment'
+
+# Navigation
+alias l='ls -l'
+alias la='ls -la'
+alias c='clear'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias s='subl'
+alias bs='browser-sync'
+
+# Packages
+alias update='brew update && brew upgrade'
+alias cleanup='brew cleanup && brew cask cleanup && gem cleanup'
+
+# Git
+alias g='git'
+alias git='hub'
+alias branch="git branch 2>/dev/null | grep '*' | sed 's/\* //'"
+alias p='git fetch origin && git rebase -p origin/`branch`'
+alias P='git push origin `branch`'
+alias gc='git commit -a -m'

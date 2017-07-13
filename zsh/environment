@@ -1,0 +1,99 @@
+# Default language
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# 64 bit flag
+export ARCHFLAGS="-arch x86_64"
+
+# Default editor
+export EDITOR="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+
+# Paths
+export YARN="$HOME/.yarn"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:$YARN/bin:$PATH"
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+REPORTTIME=10
+LISTMAX=0
+
+# Make CTRL-W delete after other chars
+WORDCHARS=${WORDCHARS//[&=\/;\!#%\{]}
+
+# Options
+setopt APPEND_HISTORY
+setopt COMPLETE_IN_WORD
+setopt CORRECT
+setopt CORRECTALL
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt IGNORE_EOF
+setopt INC_APPEND_HISTORY SHARE_HISTORY
+setopt LOCAL_OPTIONS
+setopt LOCAL_TRAPS
+setopt NO_BG_NICE
+setopt NO_HUP
+setopt NO_LIST_BEEP
+setopt PROMPT_SUBST
+setopt SHARE_HISTORY
+
+# Coreutils colors
+export CLICOLOR=1
+export LSCOLORS='GxFxCxDxBxegedabagaced'
+eval $(gdircolors ~/.dotfiles/zsh/dircolors)
+autoload -U colors
+colors
+
+# Homebrew
+export HOMEBREW_GITHUB_API_TOKEN="c93b710696607d7584b2b8c278cba64cb1729e3f"
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/etc/profile.d/autojump.sh
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby $(cat ~/.ruby-version)
+eval "$(hub alias -s)"
+
+# Prompt
+local smiley="%(?,%{$fg[green]%}✔%{$reset_color%},%{$fg[red]%}✖%{$reset_color%})"
+export PROMPT='%{$fg[green]%}$(vcprompt -f "(%b) ")%{$reset_color%}%{$fg[blue]%}%3~%{$reset_color%} '
+export RPROMPT='${smiley}'
+
+# Load functions
+fpath=(~/.dotfiles/zsh/functions $fpath)
+autoload -U ~/.dotfiles/zsh/functions/*(:t)
+
+# Completion
+zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Z}"
+zstyle ":completion:*" insert-tab pending
+autoload -Uz compinit
+compinit -u
+
+# Bindkeys
+bindkey -v
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[5~" beginning-of-history
+bindkey "\e[6~" end-of-history
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" quoted-insert
+bindkey "\e[5C" forward-word
+bindkey "\eOc" emacs-forward-word
+bindkey "\e[5D" backward-word
+bindkey "\eOd" emacs-backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
+bindkey "^H" backward-delete-word
+bindkey "\e[8~" end-of-line
+bindkey "\e[7~" beginning-of-line
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+bindkey "^i" expand-or-complete-prefix
+bindkey "^R" history-incremental-search-backward

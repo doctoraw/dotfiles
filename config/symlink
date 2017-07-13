@@ -1,0 +1,7 @@
+ln -s ~/.dotfiles/config/gemrc ~/.gemrc
+ln -s ~/.dotfiles/config/gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/config/gitignore ~/.gitignore
+ln -s ~/.dotfiles/config/hushlogin ~/.hushlogin
+ln -s ~/.dotfiles/config/ruby-version ~/.ruby-version
+ln -s ~/.dotfiles/config/zshrc ~/.zshrc
+ln -s ~/.dotfiles/zsh ~/.zsh
